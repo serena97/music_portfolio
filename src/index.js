@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './assets/fonts/CormorantGaramond/CormorantGaramond-Italic.ttf';
+import './assets/fonts/CormorantGaramond/CormorantGaramond-Regular.ttf';
+import './assets/fonts/CormorantGaramond/CormorantGaramond-SemiBold.ttf';
+
 
 ReactDOM.render(
   <React.StrictMode>
