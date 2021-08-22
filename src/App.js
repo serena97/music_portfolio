@@ -10,37 +10,40 @@ class App extends React.Component {
     this.state = {
       mouse: {x: 0, y: 0},
       camera: null,
-      mesh: null
+      mesh: null,
     }
-
+    this.mount = null;
+    this.canvas = null;
     this.onMouseMove = this.onMouseMove.bind(this);
 
   }
 
   componentDidMount() {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    const camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.1, 1000 );
     camera.position.z = 5;
 
     const renderer = new THREE.WebGLRenderer({alpha: true});
-    renderer.setClearColor( 0xffffff, 0);
+    renderer.setClearColor( 'black', 0.15);
 		renderer.setSize( window.innerWidth, window.innerHeight );
+    // https://blog.bitsrc.io/starting-with-react-16-and-three-js-in-5-minutes-3079b8829817
     this.mount.appendChild( renderer.domElement );
+    this.canvas = renderer.domElement;
+    var lightAmb = new THREE.AmbientLight(0xffff);
+    scene.add(lightAmb);
 
-    const geometry = new THREE.CircleGeometry();
-    const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-    const cube = new THREE.Mesh( geometry, material );
-    this.setState({camera: camera, mesh: cube})
-    scene.add( cube );
+    const geometry1 = new THREE.SphereGeometry(0.7,1);
+    const material1 = new THREE.MeshBasicMaterial( { color: 'white'} );
+    const sphere = new THREE.Mesh( geometry1, material1 );
+    scene.add( sphere );
+    this.setState({camera: camera, mesh: sphere})
 
     document.addEventListener('mousemove', this.onMouseMove, false);
 
     const animate = function () {
       requestAnimationFrame( animate );
 
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-
+      renderer.setPixelRatio(window.devicePixelRatio);
       renderer.render( scene, camera );
     };
 
@@ -49,13 +52,12 @@ class App extends React.Component {
   }
 
   onMouseMove(event) {
-    
+    // adapted from https://jsfiddle.net/atwfxdpd/10/
     // Update the mouse variable
     event.preventDefault();
     const x = (event.clientX / window.innerWidth) * 2 - 1;
     const y = - (event.clientY / window.innerHeight) * 2 + 1;
     this.setState({mouse: {x: x, y: y}})
-
   
     const {camera, mesh } = this.state;
    // Make the sphere follow the mouse
@@ -65,23 +67,25 @@ class App extends React.Component {
     var distance = - camera.position.z / dir.z;
     var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
     mesh.position.copy(pos);
-    
-    // Make the sphere follow the mouse
-  //	mouseMesh.position.set(event.clientX, event.clientY, 0);
+
+
+    const text = document.getElementById('enter')
+    text.style.position = 'absolute';
+    text.style.left = event.clientX - 50 + 'px'
+    text.style.top = event.clientY -  40+ 'px'
   };
 
   render() {
     return (
       <div className="App">
-        <div ref={ref => (this.mount = ref)} />
+        <div id="enter">enter</div>
+        <div ref={ref => (this.mount = ref)}>
+        </div>
         <div className="overlay">
           <video className="lightbox" autoPlay muted loop>
             <source src={video} type="video/mp4"/>
             Your browser does not support the video tag.
           </video>
-        </div>
-        <div className="circle">
-          <p>enter</p>
         </div>
         <div className="logo">
           <h1 className="logo__text">GRACE</h1>
