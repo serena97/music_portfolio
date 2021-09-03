@@ -1,6 +1,12 @@
 import './App.css';
 import React from 'react';
 import Lightbox from './Lightbox';
+import CreatePost from './createpost';
+import Posts from './posts';
+import {
+  BrowserRouter as Router, Switch, Route
+} from "react-router-dom";
+import ShowPost from './showpost';
 
 class App extends React.Component {
 
@@ -17,11 +23,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        {this.state.showLightbox && <Lightbox parentCallback={this.handleCallback}/>}
-        <div className="Portfolio">
+      <Router>
+        <div className="App">
+          {this.state.showLightbox && <Lightbox parentCallback={this.handleCallback}/>}
+          <div className="Portfolio">
+            <CreatePost/>
+            <Posts/>
+          </div>
         </div>
-      </div>
+
+      <Switch>
+        <Route path='/post/:topicId'>
+          <ShowPost/>
+        </Route>
+      </Switch>
+      </Router>
     );
   }
 }
