@@ -1,15 +1,8 @@
-import axios from 'axios';
-
 const CreatePost = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = {
-            title: event.target.title.value,
-            description: event.target.description.value,
-            content: event.target.content.value,
-        }
-
-        axios.post('/api/post/createpost', data)
+        const formData = new FormData(event.target)
+        fetch('/api/post/createpost', {method: 'POST', body: formData})
             .then(res => console.log(res))
             .catch((err) => console.log(err))
     }
@@ -30,6 +23,8 @@ const CreatePost = () => {
                     <label>Content</label>
                     <textarea type="text" name="content" placeholder="Content"/>
                 </div>
+                    <label>Upload Image</label>
+                    <input type='file' id='img' name='image' accept='image/*'></input>
                 <div>
                     <button>Create Post</button>
                 </div>

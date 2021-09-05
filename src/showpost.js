@@ -25,6 +25,7 @@ const ShowPost = (props) => {
                 <h2>Description: </h2>
                 <p>{post.description}</p>
             </div>
+            <span>Posted on {post.createdAt}</span>
             <div>
                 <h2>Content: </h2>
                 <p>{post.content}</p>

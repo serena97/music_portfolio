@@ -13,7 +13,7 @@ function Posts() {
                 .then(res => setPosts(res.data))
                 .catch((err) => console.log(err))
         }
-    }, [posts])
+    }, [])
 
     return (
         <div>
