@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 const Post = require('./database/models/Post');
+const fs = require('fs')
 var fileupload = require("express-fileupload");
 
 var app = express();
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 
 app.post('/api/post/createpost', (req, res) => {
   const { image } = req.files
+  // mv() method places file in upload dir
   image.mv(path.resolve(__dirname, 'blog_images', image.name), (error) => {
     Post.create({
       ...req.body,
@@ -40,7 +42,11 @@ app.get('/api/get/post', async (req, res) => {
   console.log('getting postid', req.query.id)
   const post = await Post.findById(req.query.id).lean();
   post.createdAt = post.createdAt.toDateString() // move to utilities
-  return res.send(post)
+  const fileName = post.image
+  console.log(fileName)
+  // post.image = fs.readFileSync('blog_images', fileName)
+  res.sendFile(fileName, {root: __dirname})
+  // return res.send(post)
 })
 
 mongoose.connect('mongodb://localhost:27017/node-blog', { useNewUrlParser: true })

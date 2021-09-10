@@ -11,7 +11,9 @@ const ShowPost = (props) => {
             const post_id = location.pathname.substring(6)
             console.log(post_id)
             axios.get('/api/get/post', {params: {id: post_id}})
-                .then(res => setPost(res.data))
+                .then(res => {
+                    setPost(res.data)
+                })
                 .catch((err) => console.log(err))
         }
     })
@@ -30,6 +32,7 @@ const ShowPost = (props) => {
                 <h2>Content: </h2>
                 <p>{post.content}</p>
             </div>
+            <img src={post} alt='img'/>
         </div>
     )
 }
