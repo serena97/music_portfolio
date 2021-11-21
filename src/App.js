@@ -1,12 +1,14 @@
 import './App.css';
 import React from 'react';
 import Lightbox from './Lightbox';
-import CreatePost from './createpost';
-import Posts from './posts';
+import CreatePost from './Blog/Createpost';
+import Posts from './Blog/Posts';
 import {
   BrowserRouter as Router, Switch, Route
 } from "react-router-dom";
-import ShowPost from './showpost';
+import ShowPost from './Blog/Showpost';
+import Pillar from './Pillar'
+import Slider from './Slider/Slider'
 
 class App extends React.Component {
 
@@ -26,17 +28,24 @@ class App extends React.Component {
       <Router>
         <div className="App">
           {this.state.showLightbox && <Lightbox parentCallback={this.handleCallback}/>}
-          <div className="Portfolio">
+          {/* <div className="Portfolio">
             <CreatePost/>
             <Posts/>
-          </div>
+          </div> */}
+          {!this.state.showLightbox && 
+            <div style={{display: 'flex'}}>
+            <Pillar/>
+            <Slider/>
+            </div>
+          }
+          
         </div>
 
-      <Switch>
-        <Route path='/post/:topicId'>
-          <ShowPost/>
-        </Route>
-      </Switch>
+        <Switch>
+          <Route path='/post/:topicId'>
+            <ShowPost/>
+          </Route>
+        </Switch>
       </Router>
     );
   }

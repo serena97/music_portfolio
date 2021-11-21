@@ -56,12 +56,12 @@ class Lightbox extends React.Component {
     this.setState({mouse: {x: x, y: y}})
   
     const {camera, mesh } = this.state;
-   // Make the sphere follow the mouse
-    var vector = new THREE.Vector3(x, y, 0.5);
+    // Make the sphere follow the mouse
+    const vector = new THREE.Vector3(x, y, 0.5);
     vector.unproject( camera );
-    var dir = vector.sub( camera.position ).normalize();
-    var distance = - camera.position.z / dir.z;
-    var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
+    const dir = vector.sub( camera.position ).normalize();
+    const distance = - camera.position.z / dir.z;
+    const pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
     mesh.position.copy(pos);
 
 
@@ -90,7 +90,7 @@ class Lightbox extends React.Component {
         </video>
         </div>
         <div className="logo">
-        <h1 className="logo__text">GRACE</h1>
+          <h1 className="logo__text">GRACE</h1>
         </div>
     </div>
     );

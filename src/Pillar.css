@@ -1,0 +1,36 @@
+.nav-title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 24px;
+}
+
+.pillar {
+    /* display: flex; */
+    flex: 1;
+    margin-left: 2.5rem;
+    margin-right: 1rem;
+    text-align: left;
+}
+
+.logo-grace {
+    /* bottom: 1.5rem; */
+    /* position: absolute; */
+    letter-spacing: 1rem;
+    font-weight: 100;
+    font-size: 36px;
+    /* z-index: -2; */
+    position: relative;
+    top: 75%;
+}
+/* .logo {
+    display: flex;
+    justify-content: left;
+}
+  
+.logo__text {
+    bottom: 1rem;
+    position: absolute;
+    font-size: 80px;
+    letter-spacing: 5rem;
+    font-weight: normal;
+} */
