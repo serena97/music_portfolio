@@ -7,7 +7,7 @@ import {
   BrowserRouter as Router, Switch, Route
 } from "react-router-dom";
 import ShowPost from './Blog/Showpost';
-import Pillar from './Pillar'
+import Pillar from './Pillar/Pillar'
 import Slider from './Slider/Slider'
 
 class App extends React.Component {

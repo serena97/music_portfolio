@@ -53,7 +53,8 @@ class Slider extends React.Component {
 
         const canvas = document.querySelector('canvas.webgl')
         this.renderer = new THREE.WebGLRenderer( { antialias: true, canvas } );
-        this.renderer.setSize( window.innerWidth, window.innerHeight );
+        const width = window.innerWidth - canvas.parentElement.previousElementSibling.offsetWidth;
+        this.renderer.setSize( width, window.innerHeight );
         this.renderer.setAnimationLoop( this.animation );
     }
 
