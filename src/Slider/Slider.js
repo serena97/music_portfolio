@@ -2,7 +2,9 @@ import React from 'react';
 import './Slider.css'
 import img1 from '../assets/image1.jpeg';
 import img2 from '../assets/image2.jpeg';
-import * as THREE from 'three'
+import * as THREE from 'three';
+import fragmentShader from './fragment.fs'
+import vertexShader from './vertex.vs'
 
 class Slider extends React.Component {
     
@@ -45,8 +47,17 @@ class Slider extends React.Component {
 
         this.scene = new THREE.Scene();
 
-        this.geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
-        this.material = new THREE.MeshNormalMaterial();
+        const textureLoader = new THREE.TextureLoader()
+        const texture = textureLoader.load(img1)
+        this.geometry = new THREE.PlaneGeometry(1, 1, 32, 32)
+        this.material = new THREE.RawShaderMaterial({
+            vertexShader,
+            fragmentShader,
+            transparent: true,
+            uniforms: {
+                uTexture: {value: texture}
+            }
+        });
 
         this.mesh = new THREE.Mesh( this.geometry, this.material );
         this.scene.add( this.mesh );
