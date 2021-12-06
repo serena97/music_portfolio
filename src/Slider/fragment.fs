@@ -1,6 +1,5 @@
 precision mediump float;
 
-uniform vec2 u_resolution;
 uniform sampler2D uTexture;
 uniform sampler2D uTexture2;
 uniform float time;
@@ -32,7 +31,7 @@ vec2 moveTexture(vec2 uv, float dir) {
 }
 
 void main() {
-    vec4 textureColor = texture2D(uTexture, moveTexture(mirrored(gradient(vUv2)), 0.2));
+    vec4 textureColor = texture2D(uTexture, moveTexture(mirrored(gradient(vUv)), 0.2));
     vec4 textureColor2 = texture2D(uTexture2, moveTexture(mirrored(gradient(vUv2)), -0.2));
     float colorProgress = clamp(sin(time + vUv.y), 0.0, 1.0);
     vec4 rgba = mix(textureColor, textureColor2, colorProgress);

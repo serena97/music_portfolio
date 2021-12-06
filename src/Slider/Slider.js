@@ -52,7 +52,9 @@ class Slider extends React.Component {
         const textureLoader = new THREE.TextureLoader()
         const texture = textureLoader.load(img1)
         const texture2 = textureLoader.load(img2)
-        this.geometry = new THREE.PlaneGeometry(1, 1, 1, 1)
+        // this.geometry = new THREE.SphereGeometry( 5, 120, 120 );
+        // this.geometry = new THREE.CylinderGeometry( 5, 5, 20, 32 );
+        this.geometry = new THREE.PlaneGeometry(1, 1)
         this.material = new THREE.RawShaderMaterial({
             side: THREE.DoubleSide,
             vertexShader,
@@ -85,7 +87,7 @@ class Slider extends React.Component {
 
     animation (time) {
         // this.mesh.rotation.x = time / 2000;
-        // this.mesh.rotation.y = time / 1000;
+        // this.mesh.rotation.z = time / 1000;
         this.time += 0.05
         this.progress *= 0.7 + 1
         this.material.uniforms.time.value = this.time
