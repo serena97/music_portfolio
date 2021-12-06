@@ -27,7 +27,11 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          {this.state.showLightbox && <Lightbox parentCallback={this.handleCallback}/>}
+        <div style={{display: 'flex'}}>
+            <Pillar/>
+            <Slider/>
+            </div>
+          {/* {this.state.showLightbox && <Lightbox parentCallback={this.handleCallback}/>} */}
           {/* <div className="Portfolio">
             <CreatePost/>
             <Posts/>

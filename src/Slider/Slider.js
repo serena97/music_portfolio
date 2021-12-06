@@ -16,6 +16,8 @@ class Slider extends React.Component {
         this.geometry = null; 
         this.material = null; 
         this.mesh = null;
+        this.time = 0;
+        this.progress = 0;
         this.state = {
             currentImg: img1
         }
@@ -42,37 +44,51 @@ class Slider extends React.Component {
     }
 
     initContainer() {
-        this.camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
-	    this.camera.position.z = 1;
+        const canvas = document.querySelector('canvas.webgl')
+        const width = window.innerWidth - canvas.parentElement.previousElementSibling.offsetWidth;
 
         this.scene = new THREE.Scene();
 
         const textureLoader = new THREE.TextureLoader()
         const texture = textureLoader.load(img1)
-        this.geometry = new THREE.PlaneGeometry(1, 1, 32, 32)
+        const texture2 = textureLoader.load(img2)
+        this.geometry = new THREE.PlaneGeometry(1, 1, 1, 1)
         this.material = new THREE.RawShaderMaterial({
+            side: THREE.DoubleSide,
             vertexShader,
             fragmentShader,
             transparent: true,
             uniforms: {
-                uTexture: {value: texture}
+                uTexture: {value: texture},
+                uTexture2: {value: texture2},
+                time: {type: 'f', value: this.time},
+                progress: { type: 'f', value: 0 },
+                pixels: {type: 'v2', value: new THREE.Vector2(width, window.innerHeight)}
             }
         });
 
         this.mesh = new THREE.Mesh( this.geometry, this.material );
         this.scene.add( this.mesh );
 
-        const canvas = document.querySelector('canvas.webgl')
         this.renderer = new THREE.WebGLRenderer( { antialias: true, canvas } );
-        const width = window.innerWidth - canvas.parentElement.previousElementSibling.offsetWidth;
+        
+        this.camera = new THREE.PerspectiveCamera( 70, width / window.innerHeight, 0.01, 10 );
+	    this.camera.position.set(0, 0, 1)
+        const dist = this.camera.position.z - this.mesh.position.z
+        this.camera.fov = 2 * (180 / Math.PI) * Math.atan(1.0 / (2 * dist))
+        this.mesh.scale.x = width / window.innerHeight
+        this.camera.updateProjectionMatrix()
+        
         this.renderer.setSize( width, window.innerHeight );
         this.renderer.setAnimationLoop( this.animation );
     }
 
     animation (time) {
-        this.mesh.rotation.x = time / 2000;
-        this.mesh.rotation.y = time / 1000;
-
+        // this.mesh.rotation.x = time / 2000;
+        // this.mesh.rotation.y = time / 1000;
+        this.time += 0.05
+        this.progress *= 0.7 + 1
+        this.material.uniforms.time.value = this.time
         this.renderer.render( this.scene, this.camera );
     }
 
