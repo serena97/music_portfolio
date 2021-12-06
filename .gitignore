@@ -26,3 +26,6 @@ yarn-debug.log*
 yarn-error.log*
 
 */blog_images/*
+
+vertex.js
+fragment.js

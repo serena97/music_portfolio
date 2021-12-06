@@ -3,8 +3,8 @@ import './Slider.css'
 import img1 from '../assets/image1.jpeg';
 import img2 from '../assets/image2.jpeg';
 import * as THREE from 'three';
-import fragmentShader from './fragment.fs'
-import vertexShader from './vertex.vs'
+import fragmentShader from './fragment.js'
+import vertexShader from './vertex.js'
 
 class Slider extends React.Component {
     
