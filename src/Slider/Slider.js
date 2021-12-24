@@ -75,7 +75,7 @@ class Slider extends React.Component {
         this.renderer = new THREE.WebGLRenderer( { antialias: true, canvas } );
         
         this.camera = new THREE.PerspectiveCamera( 70, width / window.innerHeight, 0.01, 10 );
-	    this.camera.position.set(0, 0, 1)
+	      this.camera.position.set(0, 0, 1)
         const dist = this.camera.position.z - this.mesh.position.z
         this.camera.fov = 2 * (180 / Math.PI) * Math.atan(1.0 / (2 * dist))
         this.mesh.scale.x = width / window.innerHeight

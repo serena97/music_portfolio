@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import ShowPost from './Blog/Showpost';
 import Pillar from './Pillar/Pillar'
-import Slider from './Slider/Slider'
+import SliderWrapper from './Slider/SliderWrapper';
 
 class App extends React.Component {
 
@@ -29,7 +29,7 @@ class App extends React.Component {
         <div className="App">
         <div style={{display: 'flex'}}>
             <Pillar/>
-            <Slider/>
+            <SliderWrapper/>
             </div>
           {/* {this.state.showLightbox && <Lightbox parentCallback={this.handleCallback}/>} */}
           {/* <div className="Portfolio">
@@ -39,7 +39,7 @@ class App extends React.Component {
           {!this.state.showLightbox && 
             <div style={{display: 'flex'}}>
             <Pillar/>
-            <Slider/>
+            <SliderWrapper/>
             </div>
           }
           
