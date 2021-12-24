@@ -12,20 +12,28 @@ export default class SliderWrapper extends Component {
   constructor(props) {
     super(props);
     this.width = null;
+    this.setSliderWidth = this.setSliderWidth.bind(this)
   }
 
-  componentDidMount() {
+  setSliderWidth() {
     const container = document.querySelector('div.slider')
     console.log(container)
     this.width = window.innerWidth - container.previousElementSibling.offsetWidth;
     container.style.width = this.width + 'px';
   }
 
+  componentDidMount() {
+    this.setSliderWidth()
+    window.addEventListener('resize', () => {
+      this.setSliderWidth()
+    })
+  }
+
   render () {
     return (
       <div className='slider'>
         <FluidGallery
-          style={{ height: '100vh' }}
+          style={{ height: '100vh'}}
           slides={[ img1, img2, img3]}
         />
       </div>

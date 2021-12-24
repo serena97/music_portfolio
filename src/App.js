@@ -27,22 +27,19 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-        <div style={{display: 'flex'}}>
-            <Pillar/>
-            <SliderWrapper/>
+          {this.state.showLightbox && <Lightbox parentCallback={this.handleCallback}/>}
+
+          {!this.state.showLightbox && 
+            <div style={{display: 'flex'}}>
+              <Pillar/>
+              <SliderWrapper/>
             </div>
-          {/* {this.state.showLightbox && <Lightbox parentCallback={this.handleCallback}/>} */}
+          }
+
           {/* <div className="Portfolio">
             <CreatePost/>
             <Posts/>
           </div> */}
-          {!this.state.showLightbox && 
-            <div style={{display: 'flex'}}>
-            <Pillar/>
-            <SliderWrapper/>
-            </div>
-          }
-          
         </div>
 
         <Switch>
