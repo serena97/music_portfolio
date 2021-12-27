@@ -88,7 +88,8 @@ class Lightbox extends React.Component {
 
   onClick = () => {
       // makes sense to remove it here rather than later when component is being unmounted in lifecycle method
-      document.removeEventListener('mousemove', this.onMouseMove, false)
+      document.getElementById("logo").className = 'logo-transformed'
+      document.removeEventListener('mousemove', this.onMouseMove, false);
       this.props.parentCallback();
   }
 

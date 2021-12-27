@@ -40,6 +40,12 @@ class App extends React.Component {
             <CreatePost/>
             <Posts/>
           </div> */}
+
+          <div id="logo">
+            <h1 className="logo__text">
+              GRACE
+            </h1>
+          </div>
         </div>
 
         <Switch>

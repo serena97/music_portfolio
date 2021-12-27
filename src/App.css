@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   font-family: "ComorantGaramond";
-  display: flex;
 }
 
 .Lightbox {
@@ -71,14 +70,40 @@
   /* background-color: rgba(0, 0, 0, 0.2); */
 }
 
-.logo {
-  display: flex;
-  justify-content: center;
+@keyframes slideleft {
+  to {
+    left: 3vw;
+  }
+}
+
+@keyframes turnblack {
+  from {
+    font-size: 80px;
+  }
+
+  to {
+    color: black;
+    letter-spacing: 1rem;
+    font-weight: 100;
+    font-size: 36px;
+  }
+}
+
+#logo {
+  position: absolute;
+  bottom: 1rem;
+  left: 35vw;
+}
+
+.logo-transformed {
+  animation: 3s slideleft forwards; 
+}
+
+.logo-transformed .logo__text {
+  animation: 3s turnblack forwards;
 }
 
 .logo__text {
-  bottom: 1rem;
-  position: absolute;
   color: white;
   font-size: 80px;
   letter-spacing: 5rem;

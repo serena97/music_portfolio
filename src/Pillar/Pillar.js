@@ -7,11 +7,7 @@ export default function Pillar() {
               Ab<span class="strike">o</span>ut
             </div>
             <div className='nav-title'>
-              C<span class="strike">o</span>ntact
-            </div>
-
-            <div className="logo-grace">
-                GRACE
+              C<span className="strike">o</span>ntact
             </div>
         </div>
     )
