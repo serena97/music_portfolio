@@ -11,9 +11,11 @@ class Lightbox extends React.Component {
       mouse: {x: 0, y: 0},
       camera: null,
       mesh: null,
+      renderer: null
     }
     this.mount = null;
     this.onMouseMove = this.onMouseMove.bind(this);
+    this.onResize = this.onResize.bind(this);
   }
 
   componentDidMount() {
@@ -33,9 +35,11 @@ class Lightbox extends React.Component {
     const material1 = new THREE.MeshBasicMaterial( { color: 'white'} );
     const sphere = new THREE.Mesh( geometry1, material1 );
     scene.add( sphere );
-    this.setState({camera: camera, mesh: sphere})
+    this.setState({camera: camera, mesh: sphere, renderer})
 
     document.addEventListener('mousemove', this.onMouseMove, false);
+
+    window.addEventListener('resize', this.onResize, false)
 
     const animate = function () {
       requestAnimationFrame( animate );
@@ -45,6 +49,17 @@ class Lightbox extends React.Component {
 
     animate();
 
+  }
+
+  onResize() {
+    // Update camera
+    const { camera, renderer } = this.state;
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix()
+
+    // Update renderer
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   }
 
   onMouseMove(event) {
