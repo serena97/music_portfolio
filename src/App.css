@@ -47,12 +47,41 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
-
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
   overflow: hidden;
+}
+
+@keyframes fadeOut{
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+    z-index: -10;
+  }
+}
+
+.animated {
+  animation: 3s fadeOut forwards;
+}
+
+
+@keyframes fadeIn{
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+
+.mainContent div {
+  animation: 3s fadeIn;
 }
 
 #enter {

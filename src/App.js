@@ -30,7 +30,7 @@ class App extends React.Component {
           {this.state.showLightbox && <Lightbox parentCallback={this.handleCallback}/>}
 
           {!this.state.showLightbox && 
-            <div style={{display: 'flex'}}>
+            <div className='mainContent' style={{display: 'flex'}}>
               <Pillar/>
               <SliderWrapper/>
             </div>

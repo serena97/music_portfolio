@@ -11,7 +11,8 @@ class Lightbox extends React.Component {
       mouse: {x: 0, y: 0},
       camera: null,
       mesh: null,
-      renderer: null
+      renderer: null,
+      classes: 'Lightbox'
     }
     this.mount = null;
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -89,24 +90,22 @@ class Lightbox extends React.Component {
   onClick = () => {
       // makes sense to remove it here rather than later when component is being unmounted in lifecycle method
       document.getElementById("logo").className = 'logo-transformed'
+      this.setState({classes: 'Lightbox animated'})
       document.removeEventListener('mousemove', this.onMouseMove, false);
       this.props.parentCallback();
   }
 
   render() {
     return (
-    <div className="Lightbox" onClick={this.onClick}>
+    <div className={this.state.classes} onClick={this.onClick}>
         <div id="enter">enter</div>
         <div ref={ref => (this.mount = ref)}>
         </div>
         <div className="overlay">
-        <video className="lightbox" autoPlay muted loop>
-            <source src={video} type="video/mp4"/>
-            Your browser does not support the video tag.
-        </video>
-        </div>
-        <div className="logo">
-          <h1 className="logo__text">GRACE</h1>
+          <video className="lightbox" autoPlay muted loop>
+              <source src={video} type="video/mp4"/>
+              Your browser does not support the video tag.
+          </video>
         </div>
     </div>
     );

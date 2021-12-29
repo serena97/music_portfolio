@@ -5,6 +5,10 @@
   cursor: pointer;
 }
 
+.nav-title:hover {
+  font-size: 36px;
+}
+
 .nav-title:hover .strike::after{
   content: ' ';
   position: absolute;
