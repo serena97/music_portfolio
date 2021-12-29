@@ -7,3 +7,22 @@
 .slider canvas {
     aspect-ratio: unset;
 }
+
+.arrow {
+  border-radius: 50%;
+  z-index: 1;
+  position: absolute;
+  right: 3rem;
+}
+
+.arrow .glyphicon {
+  line-height: inherit;
+}
+
+.arrow-up {
+  top: 5rem;
+}
+
+.arrow-down {
+  top: 12rem;
+}
