@@ -18,6 +18,15 @@
   line-height: inherit;
 }
 
+@keyframes grow {
+  100% {
+    transform: scale(1.5);
+  }
+}
+.arrow:hover {
+  animation: 2s grow;
+}
+
 .arrow-up {
   top: 1rem;
 }
@@ -49,5 +58,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 0 auto;
+  right: 5rem;
+  top: 1rem; 
+  position: absolute;
 }

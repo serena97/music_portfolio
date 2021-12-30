@@ -53,14 +53,12 @@ export default class SliderWrapper extends Component {
           slideIndex={this.state.slideIndex}
           parentCallback={this.handleCallback}
         />
-        <div className='overlay2'>
-          <FluidGallery
-            changeSlide={this.state.changeSlide}
-            onChange={this.onChange}
-            style={{ height: '100vh'}}
-            slides={this.slides}
-          />
-        </div>
+        <FluidGallery
+          changeSlide={this.state.changeSlide}
+          onChange={this.onChange}
+          style={{ height: '100vh'}}
+          slides={this.slides}
+        />
       </div>
     )
   }
