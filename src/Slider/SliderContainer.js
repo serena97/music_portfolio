@@ -11,14 +11,6 @@ export default class SliderContainer extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      slideIndex: 0
-    }
-    this.updateSlideIndex = this.updateSlideIndex.bind(this)
-  }
-
-  updateSlideIndex(index) {
-    this.setState({slideIndex: index})
   }
 
   onClickNext = () => {
@@ -30,12 +22,12 @@ export default class SliderContainer extends Component {
   }
 
   render() {
-    const datum = data[this.state.slideIndex]
+    const datum = data[this.props.slideIndex]
     return (
       <div className='overlay-slider'>
         <div className='text-area'>
-          <h3>{datum.title}</h3>
-          <p>{datum.description}</p>
+          <h1>{datum.title}</h1>
+          <h4>{datum.description}</h4>
         </div>
         <div className='button-area'>
           <button type="button" class='arrow arrow-up btn btn-lg' onClick={this.onClickNext}>

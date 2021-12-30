@@ -14,6 +14,7 @@ export default class SliderWrapper extends Component {
     super(props);
     this.state = {
       changeSlide: undefined,
+      slideIndex: 0
     }
     this.slides = [ img1, img2, img3]
     this.width = null;
@@ -41,8 +42,7 @@ export default class SliderWrapper extends Component {
   }
 
   onChange = (slideIndex) => {
-    // instead of having slideIndex here as state and passing in slideIndex as props in SliderContainer, we are calling the child function directly so that FluidGallery doesn't need to be re-rendered with the new slideIndex which causes infinity slide changes
-    this.sliderContainer.current.updateSlideIndex(slideIndex)
+    this.setState({slideIndex: slideIndex, changeSlide: undefined})
   }
 
   render () {
@@ -50,14 +50,17 @@ export default class SliderWrapper extends Component {
       <div className='slider'>
         <SliderContainer
           ref={this.sliderContainer}
+          slideIndex={this.state.slideIndex}
           parentCallback={this.handleCallback}
         />
-        <FluidGallery
-          changeSlide={this.state.changeSlide}
-          onChange={this.onChange}
-          style={{ height: '100vh'}}
-          slides={this.slides}
-        />
+        <div className='overlay2'>
+          <FluidGallery
+            changeSlide={this.state.changeSlide}
+            onChange={this.onChange}
+            style={{ height: '100vh'}}
+            slides={this.slides}
+          />
+        </div>
       </div>
     )
   }

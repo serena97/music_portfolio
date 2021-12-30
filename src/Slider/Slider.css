@@ -37,6 +37,11 @@
   text-align: left;
   padding-left: 3rem;
   padding-top: 1rem;
+  color: white;
+}
+
+.text-area h1 {
+  font-weight: bold;
 }
 
 .button-area {
