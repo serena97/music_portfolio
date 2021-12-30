@@ -30,11 +30,16 @@ export default class SliderContainer extends Component {
           <h4>{datum.description}</h4>
         </div>
         <div className='button-area'>
-          <button type="button" class='arrow arrow-up btn btn-lg' onClick={this.onClickNext}>
-            <span class="glyphicon glyphicon-arrow-up"></span>
+          <button type="button" className='arrow arrow-up btn btn-lg' onClick={this.onClickNext}>
+            <span className="glyphicon glyphicon-arrow-up"></span>
           </button>
-          <button type="button" class='arrow arrow-down btn btn-lg' onClick={this.onClickPrev}>
-            <span class="glyphicon glyphicon-arrow-down"></span>
+          <button type="button" className='arrow arrow-down btn btn-lg' onClick={this.onClickPrev}>
+            <span className="glyphicon glyphicon-arrow-down"></span>
+          </button>
+        </div>
+        <div>
+          <button type="button" className='play'>
+            <span className="glyphicon glyphicon-play"></span>
           </button>
         </div>
       </div>
