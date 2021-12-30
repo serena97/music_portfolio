@@ -11,8 +11,7 @@
 .arrow {
   border-radius: 50%;
   z-index: 1;
-  position: absolute;
-  right: 3rem;
+  position: relative;
 }
 
 .arrow .glyphicon {
@@ -20,9 +19,30 @@
 }
 
 .arrow-up {
-  top: 5rem;
+  top: 1rem;
 }
 
 .arrow-down {
-  top: 12rem;
+  top: 4rem;
+}
+
+.overlay-slider {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+}
+
+.text-area {
+  width: 70%;
+  text-align: left;
+  padding-left: 3rem;
+  padding-top: 1rem;
+}
+
+.button-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
 }

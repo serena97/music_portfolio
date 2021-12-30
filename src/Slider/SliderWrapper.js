@@ -1,23 +1,25 @@
 import React, { Component } from 'react'
 import './Slider.css'
 
-import FluidGallery, { changeSlideEnum } from 'react-fluid-gallery'
+import FluidGallery from 'react-fluid-gallery'
 
 import img1 from '../assets/image1.jpeg';
 import img2 from '../assets/image2.jpeg';
 import img3 from '../assets/image3.jpeg';
+import SliderContainer from './SliderContainer';
 
 export default class SliderWrapper extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      changeSlide: undefined
+      changeSlide: undefined,
     }
+    this.slides = [ img1, img2, img3]
     this.width = null;
     this.setSliderWidth = this.setSliderWidth.bind(this)
-    this.onClickNext = this.onClickNext.bind(this);
-    this.onClickPrev = this.onClickPrev.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.sliderContainer = React.createRef();
   }
 
   setSliderWidth() {
@@ -34,27 +36,27 @@ export default class SliderWrapper extends Component {
     })
   }
 
-  onClickPrev = () => {
-    this.setState({changeSlide: changeSlideEnum.prev});
+  handleCallback = (changeSlideValue) => {
+    this.setState({changeSlide: changeSlideValue})
   }
 
-  onClickNext = () => {
-    this.setState({changeSlide: changeSlideEnum.next});
+  onChange = (slideIndex) => {
+    // instead of having slideIndex here as state and passing in slideIndex as props in SliderContainer, we are calling the child function directly so that FluidGallery doesn't need to be re-rendered with the new slideIndex which causes infinity slide changes
+    this.sliderContainer.current.updateSlideIndex(slideIndex)
   }
 
   render () {
     return (
       <div className='slider'>
-        <button type="button" class='arrow arrow-up btn btn-lg' onClick={this.onClickNext}>
-          <span class="glyphicon glyphicon-arrow-up"></span>
-        </button>
-        <button type="button" class='arrow arrow-down btn btn-lg' onClick={this.onClickPrev}>
-          <span class="glyphicon glyphicon-arrow-down"></span>
-        </button>
+        <SliderContainer
+          ref={this.sliderContainer}
+          parentCallback={this.handleCallback}
+        />
         <FluidGallery
           changeSlide={this.state.changeSlide}
+          onChange={this.onChange}
           style={{ height: '100vh'}}
-          slides={[ img1, img2, img3]}
+          slides={this.slides}
         />
       </div>
     )
