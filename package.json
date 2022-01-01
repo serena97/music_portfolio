@@ -8,11 +8,17 @@
   "dependencies": {
     "next": "latest",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-fluid-gallery": "https://github.com/serena97/react-fluid-gallery.git",
+    "three": "^0.131.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.4",
     "tailwindcss": "^3.0.0"
+  },
+  "volta": {
+    "node": "16.13.1",
+    "npm": "8.3.0"
   }
 }
