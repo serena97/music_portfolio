@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 body {
   margin: 0;
@@ -67,4 +67,22 @@ code {
   font-size: 80px;
   letter-spacing: 5rem;
   font-weight: normal;
+}
+
+.mainContent {
+  display: flex;
+}
+
+@keyframes fadeIn{
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.mainContent div {
+  animation: 3s fadeIn;
 }

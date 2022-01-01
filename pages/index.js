@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import React from 'react';
 import Lightbox from '../components/lightbox';
+import Pillar from '../components/pillar';
+import SliderWrapper from '../components/sliderWrapper';
 
 export default class Home extends React.Component {
 
@@ -27,6 +29,7 @@ export default class Home extends React.Component {
             as="font"
             crossOrigin=""
           />
+          <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
         </Head>
 
         <main>
@@ -34,7 +37,7 @@ export default class Home extends React.Component {
             {this.state.showLightbox && <Lightbox parentCallback={this.handleCallback}/>}
 
             {!this.state.showLightbox && 
-              <div className='mainContent' style={{display: 'flex'}}>
+              <div className='mainContent'>
                 <Pillar/>
                 <SliderWrapper/>
               </div>
