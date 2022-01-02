@@ -29,45 +29,8 @@ code {
   font-family: "ComorantGaramond";
 }
 
-@keyframes slideleft {
-  to {
-    left: 3vw;
-  }
-}
 
-@keyframes turnblack {
-  from {
-    font-size: 80px;
-  }
 
-  to {
-    color: black;
-    letter-spacing: 1.5rem;
-    font-weight: 100;
-    font-size: 36px;
-  }
-}
-
-#logo {
-  position: absolute;
-  bottom: 1rem;
-  left: 35vw;
-}
-
-.logo-transformed {
-  animation: 3s slideleft forwards; 
-}
-
-.logo-transformed .logo__text {
-  animation: 3s turnblack forwards;
-}
-
-.logo__text {
-  color: white;
-  font-size: 80px;
-  letter-spacing: 5rem;
-  font-weight: normal;
-}
 
 .mainContent {
   display: flex;
@@ -85,4 +48,36 @@ code {
 
 .mainContent div {
   animation: 3s fadeIn;
+}
+
+@keyframes slideleft {
+  from {
+    left: 35vw;
+  }
+
+  to {
+    left: 3vw;
+  }
+}
+
+@keyframes turnblack {
+  from {
+    letter-spacing: 5rem;
+    font-size: 80px;
+  }
+
+  to {
+    color: black;
+    letter-spacing: 1.5rem;
+    font-weight: 100;
+    font-size: 36px;
+  }
+}
+
+.logo-transformed div {
+  animation: 3s slideleft forwards; 
+}
+
+.logo-transformed h1 {
+  animation: 3s turnblack forwards;
 }

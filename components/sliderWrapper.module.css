@@ -1,9 +1,7 @@
-.slider {
-  display: flex;
-  flex: 4;
-  background-color: teal;
-}
-
 .slider canvas {
   aspect-ratio: unset;
+}
+
+.slider {
+  width: 100%;
 }

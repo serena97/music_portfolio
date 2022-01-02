@@ -14,21 +14,7 @@ export default class SliderWrapper extends Component {
     }
     this.slides = [ '/assets/image1.jpeg', '/assets/image2.jpeg', '/assets/image3.jpeg']
     this.rootElement = React.createRef();
-    this.setSliderWidth = this.setSliderWidth.bind(this)
     this.onChange = this.onChange.bind(this);
-  }
-
-  setSliderWidth() {
-    const container = this.rootElement.current;
-    const width = window.innerWidth - container.previousElementSibling.offsetWidth; // previous element sibling is pillar
-    container.style.width = width + 'px';
-  }
-
-  componentDidMount() {
-    this.setSliderWidth()
-    window.addEventListener('resize', () => {
-      this.setSliderWidth()
-    })
   }
 
   handleCallback = (changeSlideValue) => {
@@ -41,7 +27,7 @@ export default class SliderWrapper extends Component {
 
   render () {
     return (
-      <div className={styles.slider} ref={this.rootElement}>
+      <div ref={this.rootElement} className={styles.slider}>
         <SliderContainer
           slideIndex={this.state.slideIndex}
           parentCallback={this.handleCallback}
