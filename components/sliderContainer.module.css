@@ -2,6 +2,7 @@
   border-radius: 50%;
   z-index: 1;
   position: relative;
+  background-color: white;
 }
 
 .glyphicon {
@@ -39,8 +40,13 @@
   color: white;
 }
 
-.text-area h1 {
+.title {
   font-weight: bold;
+  font-size: 60px;
+}
+
+.description {
+  font-size: 18px;
 }
 
 .button-area {

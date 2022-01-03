@@ -1,6 +1,6 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
 body {
   margin: 0;
@@ -28,9 +28,6 @@ code {
   text-align: center;
   font-family: "ComorantGaramond";
 }
-
-
-
 
 .mainContent {
   display: flex;

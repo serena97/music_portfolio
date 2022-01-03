@@ -4,9 +4,9 @@ import styles from './sliderContainer.module.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const data = [
-  {title: 'Miss You', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-  {title: 'End Time', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'},
-  {title: 'The Glow Of Beauty', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'}
+  {title: 'Miss You', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', embedId:'sq04_iC_niw'},
+  {title: 'End Time', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', embedId:'jXN82pXEsis'},
+  {title: 'The Glow Of Beauty', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', embedId:'LN0b9yCtMfY'}
 ]
 
 export default class SliderContainer extends Component {
@@ -23,13 +23,17 @@ export default class SliderContainer extends Component {
     this.props.parentCallback(changeSlideEnum.prev)
   }
 
+  onPlay = (embedId) => {
+    this.props.playVideo(embedId);
+  }
+
   render() {
     const datum = data[this.props.slideIndex]
     return (
       <div className={styles.slider}>
         <div className={styles['text-area']}>
-          <h1>{datum.title}</h1>
-          <h4>{datum.description}</h4>
+          <div className={styles.title}>{datum.title}</div>
+          <div className={styles.description}>{datum.description}</div>
         </div>
         <div className={styles['button-area']}>
           <button type="button" className={`${styles.arrow} ${styles['arrow-up']} btn btn-lg`} onClick={this.onClickNext}>
@@ -40,7 +44,7 @@ export default class SliderContainer extends Component {
           </button>
         </div>
         <div>
-          <button type="button" className={styles.play}>
+          <button type="button" className={styles.play} onClick={() => this.onPlay(datum.embedId)}>
             <span className={`glyphicon glyphicon-play ${styles['glyphicon-play']}`}></span>
           </button>
         </div>
