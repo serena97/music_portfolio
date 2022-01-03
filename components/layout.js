@@ -2,8 +2,9 @@ import React from 'react';
 import Pillar from './pillar';
 import Head from 'next/head';
 import styles from './layout.module.css'
+import Link from 'next/link';
 
-const Layout = ({ children, showLightbox, fixLeftLogo }) => (
+const Layout = ({ children, showLightbox }) => (
   <>
     <Head>
       <title>GRACE</title>
@@ -30,16 +31,21 @@ const Layout = ({ children, showLightbox, fixLeftLogo }) => (
             </div>
           </div>
         )}
-        <div id="logo">
-          <div className={`${styles.logo} ${showLightbox ? styles['lightbox-logo'] : styles['main-logo']}`}>
-            <h1>
-              GRACE
-            </h1>
+        <Link href='/'>
+          <a>
+          <div id="logo">
+            <div className={`${styles.logo} ${showLightbox ? styles['lightbox-logo'] : styles['main-logo']}`}>
+              <h1>
+                GRACE
+              </h1>
+            </div>
           </div>
-        </div>
+          </a>
+        </Link>
       </div>
     </main>
   </>
 );
+//TODO : make link route to portfolio
 
 export default Layout;
