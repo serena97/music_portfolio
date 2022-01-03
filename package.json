@@ -1,48 +1,29 @@
 {
-  "name": "music-portfolio",
-  "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "axios": "^0.21.1",
+    "bootstrap-icons": "^1.7.2",
+    "date-fns": "^2.28.0",
+    "graphql": "^16.2.0",
+    "graphql-request": "^3.7.0",
+    "html-react-parser": "^1.4.4",
+    "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-fluid-gallery": "git+https://github.com/serena97/react-fluid-gallery.git",
-    "react-router-dom": "^5.2.1",
-    "react-scripts": "4.0.3",
-    "three": "^0.131.3",
-    "web-vitals": "^1.1.2"
+    "react-fluid-gallery": "https://github.com/serena97/react-fluid-gallery.git",
+    "three": "^0.131.3"
   },
-  "scripts": {
-    "prestart": "node transform-shaders.js",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "proxy": "http://localhost:5000/",
   "devDependencies": {
-    "raw-loader": "^4.0.2",
-    "webpack-cli": "^4.9.1"
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.4",
+    "tailwindcss": "^3.0.0"
+  },
+  "volta": {
+    "node": "16.13.1",
+    "npm": "8.3.0"
   }
 }

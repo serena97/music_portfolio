@@ -1,0 +1,13 @@
+.slider canvas {
+  aspect-ratio: unset;
+}
+
+.slider {
+  width: 100%;
+}
+
+.play-video {
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+}
