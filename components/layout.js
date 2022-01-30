@@ -1,7 +1,7 @@
 import React from 'react';
 import Pillar from './pillar';
 import Head from 'next/head';
-import styles from './layout.module.css'
+import styles from './layout.module.scss'
 import Link from 'next/link';
 
 const Layout = ({ children, showLightbox }) => (
@@ -34,7 +34,7 @@ const Layout = ({ children, showLightbox }) => (
         <Link href='/'>
           <a>
           <div id="logo">
-            <div className={`${styles.logo} ${showLightbox ? styles['lightbox-logo'] : styles['main-logo']}`}>
+            <div className={`sm:visible invisible ${styles.logo} ${showLightbox ? styles['lightbox-logo'] : styles['main-logo']}`}>
               <h1>
                 GRACE
               </h1>
