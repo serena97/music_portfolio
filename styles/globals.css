@@ -31,6 +31,13 @@ code {
 
 .mainContent {
   display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 640px) {
+  .mainContent {
+    flex-direction: row;
+  }
 }
 
 @keyframes fadeIn{
@@ -53,7 +60,9 @@ code {
   }
 
   to {
-    left: 3vw;
+    left: 0;
+    margin-left: 2rem; 
+    /* TODO refactor this to variable */
   }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Pillar from './pillar';
 import Head from 'next/head';
-import styles from './layout.module.css'
+import styles from './layout.module.scss'
 import Link from 'next/link';
 
 const Layout = ({ children, showLightbox }) => (

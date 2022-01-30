@@ -29,19 +29,24 @@ export default class SliderContainer extends Component {
 
   render() {
     const datum = data[this.props.slideIndex]
+    // must calculate width of absolute div as it is taken out of normal flow of document
     return (
       <div className={styles.slider}>
-        <div className={styles['text-area']}>
-          <div className={styles.title}>{datum.title}</div>
-          <div className={styles.description}>{datum.description}</div>
-        </div>
-        <div className={styles['button-area']}>
-          <button type="button" className={`${styles.arrow} ${styles['arrow-up']} btn btn-lg`} onClick={this.onClickNext}>
-            <span className={`glyphicon glyphicon-arrow-up ${styles.glyphicon}`}></span>
-          </button>
-          <button type="button" className={`${styles.arrow} ${styles['arrow-down']} btn btn-lg`} onClick={this.onClickPrev}>
-            <span className={`glyphicon glyphicon-arrow-down ${styles.glyphicon}`}></span>
-          </button>
+        <div>
+          <div className={styles['text-area']}>
+            <div className={styles.title}>{datum.title}</div>
+            <div className={styles.description}>{datum.description}</div>
+          </div>
+          <div className={styles['button-area-wrapper']}>
+            <div className={styles['button-area']}>
+              <button type="button" className={`${styles.arrow} ${styles['arrow-up']} btn btn-lg`} onClick={this.onClickNext}>
+                <span className={`glyphicon glyphicon-arrow-up ${styles.glyphicon}`}></span>
+              </button>
+              <button type="button" className={`${styles.arrow} ${styles['arrow-down']} btn btn-lg`} onClick={this.onClickPrev}>
+                <span className={`glyphicon glyphicon-arrow-down ${styles.glyphicon}`}></span>
+              </button>
+            </div>
+          </div>
         </div>
         <div>
           <button type="button" className={styles.play} onClick={() => this.onPlay(datum.embedId)}>

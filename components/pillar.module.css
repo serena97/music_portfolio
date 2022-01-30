@@ -47,6 +47,12 @@
     min-width: 200px;
 }
 
+@media only screen and (min-width: 640px) {
+  .pillar {
+    display: block !important;
+  }
+}
+
 .logo-grace {
     letter-spacing: 1rem;
     font-weight: 100;

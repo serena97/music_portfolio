@@ -1,0 +1,38 @@
+$color-primary: rgb(56, 57, 58);
+
+.content {
+  display: flex;
+  flex: 4;
+  background-color: $color-primary;
+  height: 100vh;
+  width: 100%;
+}
+
+.logo {
+  position: absolute;
+  bottom: 1rem;
+}
+
+.lightbox-logo {
+  left: 35vw;
+
+  & h1 {
+    color: white;
+    font-size: 80px;
+    letter-spacing: 5rem;
+    font-weight: normal;
+  }
+}
+
+.main-logo {
+  left: 3vw;
+
+  & h1 {
+    color: black;
+    letter-spacing: 1.5rem;
+    font-weight: 100;
+    font-size: 36px;
+  }
+}
+
+

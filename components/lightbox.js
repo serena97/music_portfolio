@@ -67,7 +67,6 @@ class Lightbox extends React.Component {
   onMouseMove(event) {
     // adapted from https://jsfiddle.net/atwfxdpd/10/
     // Update the mouse variable
-    event.preventDefault();
     const x = (event.clientX / window.innerWidth) * 2 - 1;
     const y = - (event.clientY / window.innerHeight) * 2 + 1;
     this.setState({mouse: {x: x, y: y}})
