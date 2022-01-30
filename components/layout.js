@@ -34,7 +34,7 @@ const Layout = ({ children, showLightbox }) => (
         <Link href='/'>
           <a>
           <div id="logo">
-            <div className={`${styles.logo} ${showLightbox ? styles['lightbox-logo'] : styles['main-logo']}`}>
+            <div className={`sm:visible invisible ${styles.logo} ${showLightbox ? styles['lightbox-logo'] : styles['main-logo']}`}>
               <h1>
                 GRACE
               </h1>
