@@ -1,3 +1,5 @@
+@import "./styles/variables.scss";
+
 .arrow {
   border-radius: 50%;
   z-index: 1;
@@ -40,7 +42,6 @@
 }
 
 .text-area {
-  width: 70%;
   text-align: left;
   padding-left: 3rem;
   padding-top: 1rem;
@@ -69,7 +70,7 @@
   right: 0rem;
   top: 0rem; 
   position: relative;
-  margin-right: 1.5rem;
+  margin-right: $mobile-margin-right;
 }
 
 .play {

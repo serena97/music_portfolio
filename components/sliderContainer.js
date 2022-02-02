@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { changeSlideEnum } from 'react-fluid-gallery'
-import styles from './sliderContainer.module.css'
+import styles from './sliderContainer.module.scss'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const data = [
@@ -33,8 +33,8 @@ export default class SliderContainer extends Component {
     return (
       <div className={styles.slider}>
         <div>
-          <div className={styles['text-area']}>
-            <div className={styles.title}>{datum.title}</div>
+          <div className={`w-4/5 sm:w-7/10 ${styles['text-area']}`}>
+            <div className={'text-6xl sm:text-8xl sm:font-bold'}>{datum.title}</div>
             <div className={styles.description}>{datum.description}</div>
           </div>
           <div className={styles['button-area-wrapper']}>

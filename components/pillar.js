@@ -1,4 +1,4 @@
-import styles from './pillar.module.css';
+import styles from './pillar.module.scss';
 import Link from 'next/link'
 
 export default function Pillar() {
@@ -20,12 +20,12 @@ export default function Pillar() {
           </div>
           {/**mobile menu */}
           <div className='sm:hidden bg-gray-800 flex justify-between h-20'>
-            <div className="text-white p-1 pl-2 inline-block">
-              <span className='text-7xl'>
+            <div className="text-white p-1 pl-8 inline-block">
+              <span className='text-7xl tracking-widest	'>
                 GRACE
               </span>
             </div>
-            <div className="sm:hidden right-0 inline-block">
+            <div className={`${styles.hamburger} sm:hidden inline-block `}>
               {/* Mobile menu button */}
               <button type="button" className="h-full inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                 <span className="sr-only">Open main menu</span>
