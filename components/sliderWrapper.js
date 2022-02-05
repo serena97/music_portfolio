@@ -28,15 +28,22 @@ export default class SliderWrapper extends Component {
   }
 
   playVideo = (embedId) => {
-    this.setState({playVideo: true})
-    this.setState({embedId})
+    // determine screen width
+    if(screen.width > 640) {
+      this.setState({playVideo: true})
+      this.setState({embedId})
+    } else {
+      const url = 'https://youtu.be/' + embedId
+      window.location.replace(url);
+    }
   }
 
   render () {
     return (
       <div className={styles.slider}>
         {this.state.playVideo ? (
-          <div className={styles['play-video']}>
+          <div className={`${styles['play-video']}`}>
+            {/* this btn doesnt work */}
             <button type="button" className="btn-close" aria-label="Close"></button>
             <YoutubeEmbed embedId={this.state.embedId} />
           </div>
