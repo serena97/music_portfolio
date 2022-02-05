@@ -34,7 +34,7 @@ export default class SliderWrapper extends Component {
       this.setState({embedId})
     } else {
       const url = 'https://youtu.be/' + embedId
-      window.location.replace(url);
+      window.location.href = url;
     }
   }
 
