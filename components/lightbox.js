@@ -13,14 +13,25 @@ class Lightbox extends React.Component {
       renderer: null,
       classes: 'lightbox'
     }
-    this.mount = null;
+    this.mount = React.createRef();
     this.rootElement = React.createRef();
     this.enterElement = React.createRef();
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onResize = this.onResize.bind(this);
+    this.isPhone = this.isPhone.bind(this);
+  }
+
+  isPhone() {
+    return window.screen.width < 640
   }
 
   componentDidMount() {
+    if(this.isPhone()) {
+      setTimeout(() => {
+        this.props.parentCallback();
+      }, 3000);
+      return;
+    }
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.1, 1000 );
     camera.position.z = 5;
@@ -29,7 +40,7 @@ class Lightbox extends React.Component {
     renderer.setClearColor( 'black', 0.15);
 		renderer.setSize( window.innerWidth, window.innerHeight );
     // https://blog.bitsrc.io/starting-with-react-16-and-three-js-in-5-minutes-3079b8829817
-    this.mount.appendChild( renderer.domElement );
+    this.mount.current.appendChild( renderer.domElement );
     var lightAmb = new THREE.AmbientLight(0xffff);
     scene.add(lightAmb);
 
@@ -96,18 +107,29 @@ class Lightbox extends React.Component {
   }
 
   render() {
-    return (
-      <div className={styles.clickable} onClick={this.onClick} ref={this.rootElement}>
-          <div className={styles.enter} ref={this.enterElement}>enter</div>
-          <div ref={ref => (this.mount = ref)}></div>
-          <div className={styles.overlay}>
-            <video className={styles.lightbox} autoPlay muted loop>
-                <source src='/assets/video.mp4' type="video/mp4"/>
-                Your browser does not support the video tag.
-            </video>
-          </div>
+    const videoDiv = (
+      <div className={styles.overlay}>
+      <video className={styles.lightbox} autoPlay muted loop>
+          <source src='/assets/video.mp4' type="video/mp4"/>
+          Your browser does not support the video tag.
+      </video>
       </div>
-    );
+    )
+    return (
+      <>
+      {/* mobile */}
+      <div className={`sm:hidden ${styles.transitionLightbox}`}>
+        <div className={`tracking-[.5em] z-1 text-white text-6xl ${styles.centre}`}>GRACE</div>
+        {videoDiv}
+      </div>
+      {/* desktop */}
+      <div className={`${styles.desktopLightbox}  ${styles.clickable}`} onClick={this.onClick} ref={this.rootElement}>
+          <div className={styles.enter} ref={this.enterElement}>enter</div>
+          <div ref={this.mount}></div>
+          {videoDiv}
+      </div>
+      </>
+    )
   }
 }
 
