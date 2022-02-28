@@ -34,7 +34,7 @@ export default class SliderContainer extends Component {
       <div className={styles.slider}>
         <div>
           <div className={`w-4/5 sm:w-7/10 ${styles['text-area']}`}>
-            <div className={'text-6xl sm:text-8xl sm:font-bold'}>{datum.title}</div>
+            <div className={'text-6xl sm:text-8xl sm:font-bold tracking-wider'}>{datum.title}</div>
             <div className={styles.description}>{datum.description}</div>
           </div>
           <div className={styles['button-area-wrapper']}>
