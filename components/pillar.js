@@ -19,7 +19,7 @@ export default function Pillar() {
               </div>
           </div>
           {/**mobile menu */}
-          <div className='sm:hidden bg-gray-800 flex justify-between h-20'>
+          <div className='sm:hidden bg-black flex justify-between h-20'>
             <div className="text-white p-1 pl-8 inline-block">
               <span className='text-7xl tracking-widest	'>
                 GRACE

@@ -53,6 +53,7 @@ export default class SliderWrapper extends Component {
           </>
         ) : <></>}
           <div className={styles.slider}>
+            <div className={`${styles['normal-overlay']}`}></div>
             <SliderContainer
               slideIndex={this.state.slideIndex}
               parentCallback={this.handleCallback}

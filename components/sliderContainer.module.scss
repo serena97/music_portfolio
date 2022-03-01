@@ -35,7 +35,8 @@
   /* 235px is nav width */
 }
 
-@media only screen and (max-width: 640px) {
+// todo refactor 640 to variable
+@media only screen and (max-width: 640px) { 
   .slider {
     width: 100%;
   }
@@ -43,7 +44,6 @@
 
 .text-area {
   text-align: left;
-  padding-left: 3rem;
   padding-top: 1rem;
   color: white;
   float: left;
@@ -101,4 +101,42 @@
   height: 1px;
   position: absolute;
   font-size: 36px;
+}
+
+.dots, .readmore__button {
+  display: none;
+}
+
+.readmore__checkbox {
+  display: none;
+}
+
+@media only screen and (max-width: 640px) {
+  .dots, .readmore__button {
+    display: inline-block;
+  }
+
+  .more {
+    display: none;
+  }
+
+  .readmore__button {
+    font-style: italic;
+  }
+
+  .readmore__checkbox ~ .readmore__button::after {
+    content: ' More';
+  }
+
+  .readmore__checkbox:checked ~ .readmore__button::after {
+    content: ' Less';
+  }
+
+  .readmore__checkbox:checked ~ .dots {
+    display: none;
+  }
+
+  .readmore__checkbox:checked ~ .more {
+    display: inline;
+  }
 }
