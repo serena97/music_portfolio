@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styles from './youtubeEmbed.module.scss'
 
 const YoutubeEmbed = ({ embedId }) => (
-  <div className="video-responsive">
+  <div className={`${styles['video-responsive']}`}>
     <iframe
-      width="853"
-      height="480"
+      height="100%"
+      width="100%"
       src={`https://www.youtube.com/embed/${embedId}`}
       frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

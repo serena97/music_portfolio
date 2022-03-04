@@ -27,6 +27,10 @@ export default class SliderWrapper extends Component {
     this.setState({slideIndex: slideIndex, changeSlide: undefined})
   }
 
+  closeVideo = () => {
+    this.setState({playVideo: false})
+  }
+
   playVideo = (embedId) => {
     // determine screen width
     if(screen.width > 640) {
@@ -40,15 +44,16 @@ export default class SliderWrapper extends Component {
 
   render () {
     return (
-      <div className={styles.slider}>
+      <>
         {this.state.playVideo ? (
-          <div className={`${styles['play-video']}`}>
-            {/* this btn doesnt work */}
-            <button type="button" className="btn-close" aria-label="Close"></button>
-            <YoutubeEmbed embedId={this.state.embedId} />
-          </div>
-        ) : ( 
           <>
+          <div className={`${styles['play-video-overlay']}`}></div>
+          <button type="button" class={`${styles['btn-close']}`} aria-label="Close" onClick={this.closeVideo}></button>
+          <YoutubeEmbed embedId={this.state.embedId} />
+          </>
+        ) : <></>}
+          <div className={styles.slider}>
+            <div className={`${styles['normal-overlay']}`}></div>
             <SliderContainer
               slideIndex={this.state.slideIndex}
               parentCallback={this.handleCallback}
@@ -60,9 +65,8 @@ export default class SliderWrapper extends Component {
               style={{ height: '100vh'}}
               slides={this.slides}
             /> 
-          </>
-        )}
-      </div>
+          </div>
+      </>
     )
   }
 }

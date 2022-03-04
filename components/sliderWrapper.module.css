@@ -6,8 +6,45 @@
   width: 100%;
 }
 
-.play-video {
-  display: flex;
-  justify-content: center;
-  padding-top: 10%;
+.normal-overlay {
+  z-index: 1;
+  background-color: black;
+  opacity: 0.5;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+@keyframes expand {
+  100%  { 
+    transform: scale(100); 
+  }
+}
+
+.play-video-overlay {
+  z-index: 2;
+  background-color: black;
+  opacity: 0.9;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  border-radius: 50%;
+  height: 6rem;
+  width: 6rem;
+  animation: expand 0.8s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+.btn-close {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>");
+  z-index: 10;
+  position: fixed;
+  height: 2rem;
+  width: 2rem;
+  right: 3rem;
+  top: 3rem;
+  transition: transform 0.5s;
+}
+
+.btn-close:hover {
+  transform: scale(1.5);
 }

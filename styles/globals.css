@@ -50,9 +50,10 @@ code {
   }
 }
 
-.mainContent div {
+/* TODO fix animation on lightbox to main content */
+/* .mainContent div {
   animation: 3s fadeIn;
-}
+} */
 
 @keyframes slideleft {
   from {
