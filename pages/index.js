@@ -3,15 +3,21 @@ import SliderWrapper from '../components/sliderWrapper';
 import Lightbox from '../components/lightbox';
 import Layout from '../components/layout';
 
+let globalShowLightbox = true;
+
 export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      showLightbox: true,
+      showLightbox: globalShowLightbox
     }
   }
   
+  componentDidMount() {
+    globalShowLightbox = false;
+  }
+
   handleCallback = () => {
     this.setState({showLightbox: false})
   }
